@@ -188,7 +188,7 @@ goBackBtn.addEventListener("click", function () {
 });
 
 clearScrBtn.addEventListener("click", clearScores);
-
+1   
 viewScrBtn.addEventListener("click", function () {
     if (highscoresEl.style.display === "none") {
         highscoresEl.style.display = "block";
