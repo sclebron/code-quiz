@@ -138,11 +138,11 @@ function addScore(event) {
 
     scoreList = scoreList.sort((a, b) => {
         if (a.score < b.score) {
-          return 1;
+        return 1;
         } else {
-          return -1;
+        return -1;
         }
-      });
+    });
     
     scoreListEl.innerHTML="";
     for (let i = 0; i < scoreList.length; i++) {
