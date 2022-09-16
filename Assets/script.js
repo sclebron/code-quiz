@@ -107,7 +107,7 @@ function addScore(event) {
     endEl.style.display = "none";
     highscoresEl.style.display = "block";
 
-    let init = initialsInput.value.toUpperCase();
+    let init = initials.value.toUpperCase();
     scoreList.push({ initials: init, score: secondsLeft });
 
     scoreList = scoreList.sort((a, b) => {
