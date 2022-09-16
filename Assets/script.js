@@ -1,47 +1,3 @@
-let timeEl = document.querySelector("p.time");
-let secondsLeft = 75;
-let scoreEl = document.querySelector("#score");
-
-const introEl = document.querySelector("#intro");
-
-const questionsEl = document.querySelector("#questions");
-
-let questionEl = document.querySelector("#question");
-
-let questionCount = 0;
-
-const yaynayEl = document.querySelector("#yaynay");
-
-const finalEl = document.querySelector("#final");
-
-let initialsInput = document.querySelector("#initials");
-
-const highscoresEl = document.querySelector("#highscores");
-
-let scoreListEl = document.querySelector("#score-list");
-
-let scoreList = [];
-
-const startBtn = document.querySelector("#start");
-
-const ansBtn = document.querySelectorAll("button.ansBtn")
-
-const ans1Btn = document.querySelector("#answer1");
-
-const ans2Btn = document.querySelector("#answer2");
-
-const ans3Btn = document.querySelector("#answer3");
-
-const ans4Btn = document.querySelector("#answer4");
-
-const submitScrBtn = document.querySelector("#submit-score");
-
-const goBackBtn = document.querySelector("#goback");
-
-const clearScrBtn = document.querySelector("#clearscores");
-
-const viewScrBtn = document.querySelector("#view-scores");
-
 const questions = [ 
     {
         question: "What is the largest lake in America?",
@@ -70,28 +26,40 @@ const questions = [
     }
 ];
 
-function setTime() {
+let timeEl = document.querySelector("p.time");
+let secondsLeft = 75;
+let endEl = document.querySelector("#end");
+let scoreEl = document.querySelector("#score");
+
+function setTimer() {
     let timerInterval = setInterval(function () {
         secondsLeft--;
         timeEl.textContent = `Time:${secondsLeft}s`;
 
         if (secondsLeft === 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
-            questionsEl.style.display = "none";
-            finalEl.style.display = "block";
+            endEl.style.display = "block";
             scoreEl.textContent = secondsLeft;
         }
     }, 1000);
 }
 
+let questionsEl = document.querySelector("#questions");
+let questionCount = 0;
+
 function startQuiz() {
-    introEl.style.display = "none";
     questionsEl.style.display = "block";
     questionCount = 0;
 
-    setTime();
+    setTimer();
     setQuestion(questionCount);
 }
+
+let questionEl = document.querySelector("#question");
+let ans1Btn = document.querySelector("#answer1");
+let ans2Btn = document.querySelector("#answer2");
+let ans3Btn = document.querySelector("#answer3");
+let ans4Btn = document.querySelector("#answer4");
 
 function setQuestion(id) {
     if (id < questions.length) {
@@ -103,10 +71,11 @@ function setQuestion(id) {
     }
 }
 
+let yaynayEl = document.querySelector("#yaynay");
+
 function checkAnswer(event) {
     event.preventDefault();
 
-    yaynayEl.style.display = "block";
     let p = document.createElement("p");
     yaynayEl.appendChild(p);
 
@@ -115,10 +84,10 @@ function checkAnswer(event) {
     }, 1000);
 
     if (questions[questionCount].correctAnswer === event.target.value) {
-        p.textContent = "Correct!";
+        p.textContent = "Correct! :)";
     } else if (questions[questionCount].correctAnswer !== event.target.value) {
         secondsLeft = secondsLeft - 10;
-        p.textContent = "Wrong!";
+        p.textContent = "Wrong! :(";
     }
 
     if (questionCount < questions.length) {
@@ -127,10 +96,15 @@ function checkAnswer(event) {
     setQuestion(questionCount);
 }
 
+let initials = document.querySelector("#initials");
+let highscoresEl = document.querySelector("#highscores");
+let scoreListEl = document.querySelector("#score-list");
+let scoreList = [];
+
 function addScore(event) {
     event.preventDefault();
 
-    finalEl.style.display = "none";
+    endEl.style.display = "none";
     highscoresEl.style.display = "block";
 
     let init = initialsInput.value.toUpperCase();
@@ -166,6 +140,14 @@ function displayScores() {
         scoreList = storedScoreList;
     }
 }
+
+let ansBtn = document.querySelectorAll("button.ansBtn")
+let startBtn = document.querySelector("#start");
+let submitScrBtn = document.querySelector("#submit-score");
+let goBackBtn = document.querySelector("#goback");
+let introEl = document.querySelector("#intro");
+let clearScrBtn = document.querySelector("#clearscores");
+let viewScrBtn = document.querySelector("#view-scores");
 
 function clearScores() {
     localStorage.clear();
