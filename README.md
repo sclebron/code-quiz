@@ -2,4 +2,4 @@ I created a timed quiz that gives the user 75 seconds to complete a quiz consist
 
 https://sclebron.github.io/code-quiz/
 
-Screen Shot 2022-09-15 at 9.09.31 PM.png
+<img width="904" alt="Screen Shot 2022-09-15 at 9 09 31 PM" src="https://user-images.githubusercontent.com/109631700/190550368-ecaeb645-1b2a-4c73-83af-71db9c638ea5.png">
