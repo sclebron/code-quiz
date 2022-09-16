@@ -38,7 +38,6 @@ function setTimer() {
 
         if (secondsLeft === 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
-            endEl.style.display = "block";
             scoreEl.textContent = secondsLeft;
         }
     }, 1000);
@@ -48,9 +47,7 @@ let questionsEl = document.querySelector("#questions");
 let questionCount = 0;
 
 function startQuiz() {
-    questionsEl.style.display = "block";
     questionCount = 0;
-
     setTimer();
     setQuestion(questionCount);
 }
@@ -71,13 +68,13 @@ function setQuestion(id) {
     }
 }
 
-let yaynayEl = document.querySelector("#yaynay");
+let answerEl = document.querySelector("#answer");
 
 function checkAnswer(event) {
     event.preventDefault();
 
     let p = document.createElement("p");
-    yaynayEl.appendChild(p);
+    answerEl.appendChild(p);
 
     setTimeout(function () {
         p.style.display = 'none';
@@ -104,10 +101,7 @@ let scoreList = [];
 function addScore(event) {
     event.preventDefault();
 
-    endEl.style.display = "none";
-    highscoresEl.style.display = "block";
-
-    let init = initials.value.toUpperCase();
+    let init = initials.value;
     scoreList.push({ initials: init, score: secondsLeft });
 
     scoreList = scoreList.sort((a, b) => {
